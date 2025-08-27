@@ -1,28 +1,24 @@
 pipeline {
-    agent { 
-        docker { 
-            steps {
-                echo 'Running Playwright in Docker'
-                sh '''
-                docker pull mcr.microsoft.com/playwright:v1.49.0-jammy
-                docker run --rm -v $PWD:/work -w /work mcr.microsoft.com/playwright:v1.49.0-jammy sh -c "npm ci && npx playwright test"
-                '''
-            } 
-        } 
+    agent {
+        docker {
+            image 'mcr.microsoft.com/playwright:v1.49.0-jammy'
+            args '-u root' // optionnel si tu veux exécuter en root
+        }
     }
+
     stages {
         stage('Install dependencies') {
             steps {
-                echo 'install dependencies ...'
+                echo 'Install dependencies...'
                 sh 'npm ci'
             }
         }
+
         stage('Run tests') {
-            steps { 
-                echo 'run test ...'
+            steps {
+                echo 'Run Playwright tests...'
                 sh 'npx playwright test'
             }
         }
-        
     }
 }
