@@ -21,7 +21,7 @@ pipeline {
       }
       stage('Generate Allure Report') {
             steps {
-                sh 'npx allure generate allure-results --clean -o allure-report'
+                sh 'npx playwright test --reporter=allure-playwright'
             }
         }
    }
