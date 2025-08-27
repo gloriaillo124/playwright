@@ -19,10 +19,20 @@ pipeline {
             junit 'playwright-report/results.xml'
          }
       }
-      stage('Publish Allure Report') {
-         steps {
-            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-         }
-      }
+      stage('Generate Allure Report') {
+            steps {
+                sh 'npx allure generate allure-results --clean -o allure-report'
+            }
+        }
    }
+   post {
+        always {
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'allure-results']]
+            ])
+        }
+    }
+
 }
