@@ -17,7 +17,7 @@ pipeline {
                 sh 'npx playwright test'
             }
         }
-        stage('Run tests') {
+        stage('generate report') {
             steps {
                 echo 'build report test ...'
                 sh 'npx playwright test --reporter=html,junit'
