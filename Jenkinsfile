@@ -11,7 +11,7 @@ pipeline {
 
       stage('Run Playwright Tests') {
          steps {
-            sh 'npx playwright test'
+            sh 'npx playwright test --reporter=junit --output=results.xml'
          }
       }
       stage('Publish Test Report') {
@@ -20,5 +20,4 @@ pipeline {
          }
       }
    }
-
 }
