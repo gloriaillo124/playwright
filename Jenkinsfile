@@ -17,11 +17,6 @@ pipeline {
                 sh 'npx playwright test'
             }
         }
-        stage('generate report') {
-            steps {
-                echo 'build report test ...'
-                sh 'npx playwright test --reporter=html,junit'
-            }
-        }
+        
     }
 }
