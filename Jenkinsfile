@@ -1,24 +1,25 @@
 pipeline {
-    agent {
-        docker {
-            image 'mcr.microsoft.com/playwright:v1.49.0-jammy'
-            args '-u root' // optionnel si tu veux exécuter en root
-        }
-    }
+   agent { docker { image 'mcr.microsoft.com/playwright:v1.55.0-noble' } }
 
-    stages {
-        stage('Install dependencies') {
-            steps {
-                echo 'Install dependencies...'
-                sh 'npm ci'
-            }
-        }
+   stages {
+      stage('Install') {
+         steps {
+            echo 'Installing dependencies...'
+            sh 'npm ci'
+         }
+      }
 
-        stage('Run tests') {
-            steps {
-                echo 'Run Playwright tests...'
-                sh 'npx playwright test'
-            }
-        }
-    }
+      stage('Run Playwright Tests') {
+         steps {
+            sh 'npx playwright test'
+         }
+      }
+
+      stage('JUnit Resultat'){
+         steps{
+            junit 'test-results/e2e-junit-results.xml'
+         }
+      }
+   }
+
 }
