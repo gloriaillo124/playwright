@@ -16,3 +16,6 @@ npx playwright test --ui --grep "@tc-012"
 echo "Lance l'interface graphique"
 npx playwright test --ui
 
+echo 'generer le report avec junit'
+npx playwright test --reporter=junit --output=results.xml
+
