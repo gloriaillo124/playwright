@@ -8,8 +8,14 @@ pipeline {
         stage('e2e-tests') {
             steps {
                 sh 'npm ci'
-                sh 'npx playwright test'
+                sh 'npx playwright test --reporter=line,junit'
             }
         }
     }
+    post {
+        always {
+            junit 'playwright-report/*.xml'
+        }
+    }
 }
+
