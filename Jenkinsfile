@@ -6,6 +6,8 @@ pipeline {
          steps {
             echo 'Installing dependencies...'
             sh 'npm ci'
+            sh 'npm install -D allure-commandline'
+
          }
       }
 

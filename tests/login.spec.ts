@@ -3,7 +3,7 @@ import LoginPage from '../page/Login.page.ts';
 
 test.describe('@login',()=>{
 
-test('username correct and password correct',{tag: ['@tc-001','@regression']}, async ({ page }) => {
+test('username correct and password correct',{tag: '@tc-001'}, async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   const loginPage:LoginPage= new LoginPage(page);
   await loginPage.saisirUsername('standard_user');
@@ -13,7 +13,7 @@ test('username correct and password correct',{tag: ['@tc-001','@regression']}, a
   
 });
 
-test('username incorrect and password correct',{tag: ['@tc-002','@regression']}, async ({ page }) => {
+test('username incorrect and password correct',{tag: '@tc-002'}, async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   const loginPage:LoginPage= new LoginPage(page);
   await loginPage.saisirUsername('incorrect_username');
