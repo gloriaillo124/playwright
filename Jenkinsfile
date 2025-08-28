@@ -5,7 +5,7 @@ pipeline {
         stage('Install') {
             agent {
                 docker {
-                    image 'mcr.microsoft.com/playwright:v1.54.2-noble'
+                    image 'mcr.microsoft.com/playwright:v1.55.0-noble'
                     args '--ipc=host'
            // args '-v /var/jenkins_home/tools:/var/jenkins_home/tools --ipc=host'
                 }
