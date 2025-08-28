@@ -6,8 +6,6 @@ pipeline {
          steps {
             echo 'Installing dependencies...'
             sh 'npm ci'
-            sh 'npm install -D allure-commandline'
-
          }
       }
 
@@ -32,7 +30,7 @@ pipeline {
             allure([
                 includeProperties: false,
                 jdk: '',
-                results: [[path: 'allure-results']]
+                results: [[path: 'allure-report']]
             ])
         }
     }
