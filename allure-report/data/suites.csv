@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","10","username incorrect and password correct","webkit","Thu Aug 28 09:11:20 CEST 2025","failed","Thu Aug 28 09:11:20 CEST 2025","@login","login.spec.ts","",""
+"","15","username correct and password correct","chromium","Thu Aug 28 09:11:17 CEST 2025","failed","Thu Aug 28 09:11:17 CEST 2025","@login","login.spec.ts","",""
+"","19","username incorrect and password correct","firefox","Thu Aug 28 09:11:18 CEST 2025","failed","Thu Aug 28 09:11:18 CEST 2025","@login","login.spec.ts","",""
+"","9","username correct and password correct","webkit","Thu Aug 28 09:11:20 CEST 2025","failed","Thu Aug 28 09:11:20 CEST 2025","@login","login.spec.ts","",""
+"","15","username incorrect and password correct","chromium","Thu Aug 28 09:11:17 CEST 2025","failed","Thu Aug 28 09:11:17 CEST 2025","@login","login.spec.ts","",""
+"","9","username correct and password correct","firefox","Thu Aug 28 09:11:18 CEST 2025","failed","Thu Aug 28 09:11:18 CEST 2025","@login","login.spec.ts","",""

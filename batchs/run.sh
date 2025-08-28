@@ -19,3 +19,11 @@ npx playwright test --ui
 echo 'generer le report avec junit'
 npx playwright test --reporter=junit --output=results.xml
 
+echo 'allure avec commandline'
+npm install -D allure-commandline
+
+echo 'clean allure-results'
+npx allure generate ./allure-results --clean
+
+echo 'lancer allure-report'
+npx allure open ./allure-report
