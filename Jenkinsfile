@@ -1,5 +1,5 @@
 pipeline {
-   agent { docker { image 'mcr.microsoft.com/playwright:v1.55.0-noble' } }
+   agent any { docker { image 'mcr.microsoft.com/playwright:v1.55.0-noble' } }
 
    stages {
       stage('Install') {
@@ -8,20 +8,20 @@ pipeline {
             sh 'npm ci'
          }
       }
-
-      stage('Run Playwright Tests') {
-         steps {
-            sh 'npx playwright test --reporter=junit --output=results.xml'
-         }
-      }
-      stage('Publish Test Report') {
-         steps {
-            junit 'playwright-report/results.xml'
-         }
-      }
+      // stage('Run Playwright Tests') {
+      //    steps {
+      //       sh 'npx playwright test --reporter=junit --output=results.xml'
+      //    }
+      // }
+      // stage('Publish Test Report') {
+      //    steps {
+      //       junit 'playwright-report/results.xml'
+      //    }
+      // }
       stage('Generate Allure Report') {
             steps {
-                sh 'npx playwright test --reporter=allure-playwright'
+                sh 'npx playwright test --reporter=junit,allure-playwright'
+                stash name: 'allure-results', includes: 'allure-results/*'
             }
         }
    }
