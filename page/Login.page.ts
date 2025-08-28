@@ -1,19 +1,17 @@
 import {Locator, Page} from '@playwright/test';
 
-class LoginPage {
-    
-    page: Page;
+class LoginPage{
+    readonly page : Page;
 
-    constructor(page: Page) {
+    constructor(page: Page){
         this.page = page;
     }
-
-   elements = {
+    elements = {
         username: ()=>this.page.locator('input[name="user-name"]'),
         password:()=> this.page.locator('input[name="password"]'),
         submit: ()=>this.page.getByRole('button', {name: 'Login'}),
         errorMessage: ()=>this.page.locator('h3[data-test="error"]')
-    
+
     }
     async saisirUsername(username: string){
         await this.elements.username().fill(username);
@@ -21,12 +19,17 @@ class LoginPage {
     async saisirPassword(password: string){
         await this.elements.password().fill(password);
     }
-    async clickSurLogin(){
+    async clicSurLogin(){
         await this.elements.submit().click();
     }
-    getErrorMessage(): Locator {
-        return this.elements.errorMessage();
+    async getErrorMessage(){
+       return this.elements.errorMessage();
     }
-
+    async dologin(username:string, password:string){
+        await this.elements.username().fill(username);
+        await this.elements.password().fill(password);
+        await this.elements.submit();
+    }
 }
+
 export default  LoginPage;

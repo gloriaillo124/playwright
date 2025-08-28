@@ -1,26 +1,23 @@
 import { test, expect } from '@playwright/test';
 import LoginPage from '../page/Login.page.ts';
 
-test.describe('@login',()=>{
-
-test('username correct and password correct',{tag: '@tc-001'}, async ({ page }) => {
+test('Tc-001 -username correct et pass correct ',{tag:['@smoke','@tc-001']}, async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   const loginPage:LoginPage= new LoginPage(page);
   await loginPage.saisirUsername('standard_user');
   await loginPage.saisirPassword('secret_sauce');
-  await loginPage.clickSurLogin();
-  await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html'); 
-  
+  await loginPage.clicSurLogin();
+  await expect(page.url()).toBe('https://www.saucedemo.com/inventory.html'); 
+
 });
 
-test('username incorrect and password correct',{tag: '@tc-002'}, async ({ page }) => {
+test('Tc-002 -username incorrect et pass correct', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   const loginPage:LoginPage= new LoginPage(page);
-  await loginPage.saisirUsername('incorrect_username');
+  await loginPage.saisirUsername('standard_user_incorrect');
   await loginPage.saisirPassword('secret_sauce');
-  await loginPage.clickSurLogin();
-  await expect(loginPage.getErrorMessage()).toBeVisible();
-});
+  await loginPage.clicSurLogin();
+  await expect( await loginPage.getErrorMessage()).toBeVisible();
 });
 
 
